@@ -1,9 +1,7 @@
 import Redux from 'redux';
 import axios from 'axios';
 
-const initialState = {
-  students: []
-}
+const initialState = [];
 
 // Action Types
 const GOT_ALL_STUDENTS = 'GOT_ALL_STUDENTS';
@@ -16,7 +14,7 @@ const FETCH_ALL_STUDENTS = 'FETCH_ALL_STUDENTS';
 export const gotAllStudents = (students) => {
   return {
     type: GOT_ALL_STUDENTS,
-    campuses
+    students
   }
 }
 
@@ -43,10 +41,10 @@ export const fetchAllStudents = () => {
 
 
 const reducer = (state = initialState, action) => {
-  const newState = { ...state };
+  let newState = [...state];
   switch (action.type) {
     case GOT_ALL_STUDENTS:
-      newState.students = [...state.students, action.students];
+      newState = [...state, ...action.students];
       return newState;
     default:
       return state;

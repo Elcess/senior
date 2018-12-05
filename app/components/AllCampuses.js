@@ -24,13 +24,13 @@ class AllCampuses extends Component {
 
 const mapStateToProps = state => {
   return {
-    campuses: state.campuses.campuses
+    campuses: state.campuses
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllCampuses
+    fetchAllCampuses: () => dispatch(fetchAllCampuses())
   }
 }
 

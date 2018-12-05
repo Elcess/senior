@@ -8,12 +8,13 @@ class AllStudents extends Component {
   }
 
   render() {
+    console.log(Array.isArray(this.props.students));
     return (
       <div>
         <h2>All Students</h2>
         <ul>
           {this.props.students.map(student => <li key={student.id}>
-            {student.name}
+            {student.firstName} {student.lastName}
           </li>)}
         </ul>
       </div>
@@ -23,13 +24,13 @@ class AllStudents extends Component {
 
 const mapStateToProps = state => {
   return {
-    students: state.students.students
+    students: state.students
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllStudents
+    fetchAllStudents: () => dispatch(fetchAllStudents())
   }
 }
 
