@@ -21,4 +21,6 @@ const Campus = db.define('campus', {
     defaultValue: 'https://upload.wikimedia.org/wikipedia/commons/8/83/Solar_system.jpg'
   },
   description: Sequelize.TEXT
-})
+});
+
+module.exports = Campus;
