@@ -20,7 +20,8 @@ class SingleStudent extends Component {
       )
     }
     else {
-      const campus = this.props.campuses[0];
+      const campuses = this.props.campuses.filter(campus => campus.id === student.campusId);
+      const campus = campuses[0];
       return (
         <div>
           <div id='student'>
