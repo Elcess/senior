@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchAllStudents } from '../reducers/students';
 
@@ -8,13 +9,14 @@ class AllStudents extends Component {
   }
 
   render() {
-    console.log(Array.isArray(this.props.students));
     return (
       <div>
         <h2>All Students</h2>
         <ul>
           {this.props.students.map(student => <li key={student.id}>
-            {student.firstName} {student.lastName}
+            <Link to={`/students/${student.id}`} >
+              {student.firstName} {student.lastName}
+            </Link>
           </li>)}
         </ul>
       </div>

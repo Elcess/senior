@@ -5,7 +5,6 @@ const initialState = [];
 
 // Action Types
 const GOT_ALL_STUDENTS = 'GOT_ALL_STUDENTS';
-const SHOW_ALL_STUDENTS = 'SHOW_ALL_STUDENTS';
 const SHOW_ONE_STUDENT = 'SHOW_ONE_STUDENT';
 const ADDED_STUDENT = 'ADDED_STUDENT';
 const FETCH_ALL_STUDENTS = 'FETCH_ALL_STUDENTS';
@@ -18,34 +17,42 @@ export const gotAllStudents = (students) => {
   }
 }
 
-export const showAllStudents = () => {
-  return {
-    type: SHOW_ALL_STUDENTS
-  }
-}
-
-export const showOneStudent = id => {
+export const showOneStudent = student => {
   return {
     type: SHOW_ONE_STUDENT,
-    id
+    student
   }
 }
 
 // Thunk Creators
 export const fetchAllStudents = () => {
   return async (dispatch) => {
-    const { data } = await axios.get('/api/students');
-    dispatch(gotAllStudents(data));
+    try {
+      const { data } = await axios.get('/api/students');
+      dispatch(gotAllStudents(data));
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 
+export const fetchSingleStudent = id => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/api/students/${id}`);
+      dispatch(showOneStudent(data));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
 
 const reducer = (state = initialState, action) => {
-  let newState = [...state];
   switch (action.type) {
     case GOT_ALL_STUDENTS:
-      newState = [...state, ...action.students];
-      return newState;
+      return [...action.students];
+    case SHOW_ONE_STUDENT:
+      return [action.student];
     default:
       return state;
   }
