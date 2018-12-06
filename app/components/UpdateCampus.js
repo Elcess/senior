@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateCampus } from '../reducers/campuses';
 
 class UpdateCampus extends Component {
   constructor(props) {
     super(props);
-    this.state = this.props.campuses[0].campus;
+    this.state = this.props.campuses[0];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeName = this.changeName.bind(this);
     this.changeAddress = this.changeAddress.bind(this);
@@ -47,7 +46,7 @@ class UpdateCampus extends Component {
           <label htmlFor='updated-campus-imageUrl'>Image URL</label>
           <input type='text' id='updated-campus-imageUrl' size='40' value={this.state.imageUrl} onChange={this.changeImage} /><br />
           <label htmlFor='updated-campus-description'>Description</label>
-          <input type='text' id='updated-campus-description' size='100' value={this.state.description} onChange={this.changeDescription} /><br />
+          <textarea id='updated-campus-description' cols='100' value={this.state.description} onChange={this.changeDescription} /><br />
           <button type='submit'>Submit</button>
         </form>
       </div>

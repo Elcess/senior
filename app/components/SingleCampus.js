@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleCampus } from '../reducers/campuses';
-import UpdateCampus from './UpdateCampus'
+import { getStudentsByCampus, fetchAllStudents } from '../reducers/students';
+import UpdateCampus from './UpdateCampus';
 
 class SingleCampus extends Component {
   componentDidMount() {
     this.props.fetchSingleCampus(this.props.match.params.id);
+    this.props.fetchAllStudents();
   }
 
   render() {
-    const entry = this.props.campuses[0];
-    if (!entry) {
+    const campus = this.props.campuses[0];
+    if (!campus) {
       return (
         <h1>We're Sorry. That Campus is not Open Yet.</h1>
       )
     }
     else {
-      const { campus, students } = entry;
+      const students = this.props.students;
       return (
         <div>
           {campus ?
@@ -29,7 +31,7 @@ class SingleCampus extends Component {
             : ''
           }
 
-          <div id='students'>
+          <div id='students-scpage'>
             <h2>Students:</h2>
             {students.length > 0 ?
               <ul>
@@ -53,12 +55,14 @@ class SingleCampus extends Component {
 
 const mapStateToProps = state => {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
+    students: getStudentsByCampus(state, state.campuses[0].id)
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSingleCampus: (id) => dispatch(fetchSingleCampus(id))
+    fetchSingleCampus: (id) => dispatch(fetchSingleCampus(id)),
+    fetchAllStudents: () => dispatch(fetchAllStudents())
   }
 }
 

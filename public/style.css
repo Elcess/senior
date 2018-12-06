@@ -41,6 +41,7 @@ main {
 ul {
   list-style: none;
   align-items: center;
+  justify-items: center
 }
 
 button {

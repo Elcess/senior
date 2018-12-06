@@ -4,12 +4,12 @@ const Student = require('../db/students');
 router.get('/:id', async (req, res, next) => {
   try {
     const student = await Student.findById(req.params.id);
-    const campus = await student.getCampus();
-    const studentObj = {
-      student: student,
-      campus: campus
-    };
-    res.json(studentObj);
+    // const campus = await student.getCampus();
+    // const studentObj = {
+    //   student: student,
+    //   campus: campus
+    // };
+    res.json(student);
   } catch (err) {
     next(err);
   }

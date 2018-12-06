@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateStudent } from '../reducers/students';
 
 class UpdateStudent extends Component {
   constructor(props) {
     super(props);
-    this.state = this.props.students[0].student;
-    console.log(this.state);
+    this.state = this.props.students[0];
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeFirstName = this.changeFirstName.bind(this);
@@ -29,7 +27,6 @@ class UpdateStudent extends Component {
   changeLastName(e) {
     this.setState({ lastName: e.target.value });
   }
-
 
   changeEmail(e) {
     this.setState({ email: e.target.value });

@@ -17,7 +17,7 @@ class AllCampuses extends Component {
   render() {
     return (
       <div>
-        <h2>All Campuses</h2>
+        <h2>Our Campuses</h2>
         <ul>
           {this.props.campuses.map(campus => <li key={campus.id}>
             <button onClick={() => this.handleClick(campus.id)}>X</button>
