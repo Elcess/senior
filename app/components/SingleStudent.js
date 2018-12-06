@@ -10,36 +10,43 @@ class SingleStudent extends Component {
 
   render() {
     const entry = this.props.students[0];
-    if (entry) { const { student, campus } = entry; }
-    return (
-      <div>
-        <div id='student'>
-          {/* {student ?
-            <div>
-              <img src={student.imageUrl} width='300' />
-              <h2>{student.firstName} {student.lastName}</h2>
-              <p>{student.email}</p>
-              <p>GPA: {student.gpa}</p>
-            </div>
-            : ''
-          } */}
-        </div>
-        <div id='campus'>
-          <h2>Home Campus:</h2>
-          <div>
-            {/* {campus ?
+    if (!entry) {
+      return (
+        <h1>We're Sorry. That Student is not Registered.</h1>
+      )
+    }
+    else {
+      const { student, campus } = entry;
+      return (
+        <div>
+          <div id='student'>
+            {student ?
               <div>
-                <Link to={`/campuses/${campus.id}`} >
-                  <img src={campus.imageUrl} width='200' />
-                  <p>{campus.name}</p>
-                </Link>
+                <img src={student.imageUrl} width='300' />
+                <h2>{student.firstName} {student.lastName}</h2>
+                <p>{student.email}</p>
+                <p>GPA: {student.gpa}</p>
               </div>
-              : <h4>This student is not assigned a campus at this time.</h4>
-            } */}
+              : ''
+            }
+          </div>
+          <div id='campus'>
+            <h2>Home Campus:</h2>
+            <div>
+              {campus ?
+                <div>
+                  <Link to={`/campuses/${campus.id}`} >
+                    <img src={campus.imageUrl} width='200' />
+                    <p>{campus.name}</p>
+                  </Link>
+                </div>
+                : <h4>This student is not assigned a campus at this time.</h4>
+              }
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

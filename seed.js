@@ -29,7 +29,7 @@ const students = [
     firstName: 'Michael',
     lastName: 'Lee',
     email: 'mlee@example.com',
-    imageUrl: 'https://cdn.pixabay.com/photo/2015/05/20/21/45/student-776190_1280.png',
+    imageUrl: 'https://c.pxhere.com/photos/8a/5c/girl_guitar_violin_music_student_sound_color_music_students-827933.jpg!d',
     gpa: 2.5,
     campusId: 1
   },
@@ -37,7 +37,7 @@ const students = [
     firstName: 'Logan',
     lastName: 'Zhang',
     email: 'lzhang@example.com',
-    imageUrl: 'https://cdn.pixabay.com/photo/2012/04/24/21/29/laptop-40935_1280.png',
+    imageUrl: 'https://svgsilh.com/svg/1524010.svg',
     gpa: 1.7,
     campusId: 1
   },
@@ -45,7 +45,7 @@ const students = [
     firstName: 'Avery',
     lastName: 'Wang',
     email: 'awang@example.com',
-    imageUrl: 'https://cdn.pixabay.com/photo/2016/03/31/18/10/boy-1294181_1280.png',
+    imageUrl: 'https://www.maxpixel.net/static/photo/2x/Schoolgirl-Book-Student-Study-Teenager-Learning-147783.png',
     gpa: 3.8,
     campusId: 1
   },
@@ -69,7 +69,7 @@ const students = [
     firstName: 'Riley',
     lastName: 'Gonzalez',
     email: 'rgonzalez@example.com',
-    imageUrl: 'https://cdn.pixabay.com/photo/2018/09/11/14/49/moe-3669736_1280.png',
+    imageUrl: 'https://svgsilh.com/svg/154338.svg',
     gpa: 4.0,
     campusId: 2
   },

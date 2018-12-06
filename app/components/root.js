@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import AllCampuses from './AllCampuses';
 import AllStudents from './AllStudents';
 import SingleCampus from './SingleCampus';
@@ -12,15 +12,15 @@ const Root = () => {
     <BrowserRouter >
       <div>
         <nav>
-          <Link to='/'>
+          <NavLink to='/'>
             Welcome!
-        </Link>
-          <Link to='/campuses'>
+        </NavLink>
+          <NavLink to='/campuses'>
             Campuses
-        </Link>
-          <Link to='/students'>
+        </NavLink>
+          <NavLink to='/students'>
             Students
-        </Link>
+        </NavLink>
         </nav>
         <main>
           <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>

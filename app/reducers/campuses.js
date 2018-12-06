@@ -39,7 +39,6 @@ export const fetchAllCampuses = () => {
 export const fetchSingleCampus = (id) => {
   return async (dispatch) => {
     try {
-      console.log('in fetchSingleCampus');
       const { data } = await axios.get(`/api/campuses/${id}`);
       dispatch(showOneCampus(data));
     } catch (err) {
