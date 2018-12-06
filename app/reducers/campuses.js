@@ -42,7 +42,7 @@ export const removedCampus = (id) => {
 export const updatedCampus = (campus) => {
   return {
     type: UPDATED_CAMPUS,
-    student
+    campus
   }
 }
 

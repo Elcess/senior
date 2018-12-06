@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleCampus } from '../reducers/campuses';
+import UpdateCampus from './UpdateCampus'
 
 class SingleCampus extends Component {
   componentDidMount() {
@@ -43,6 +44,7 @@ class SingleCampus extends Component {
           </h4>
             }
           </div>
+          <UpdateCampus {...this.props} />
         </div>
       )
     }
