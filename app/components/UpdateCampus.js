@@ -6,7 +6,7 @@ import { updateCampus } from '../reducers/campuses';
 class UpdateCampus extends Component {
   constructor(props) {
     super(props);
-    this.state = this.props.campuses[0].campus;
+    this.state = this.props.campuses[0];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeName = this.changeName.bind(this);
     this.changeAddress = this.changeAddress.bind(this);

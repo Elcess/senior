@@ -47,7 +47,7 @@ class SingleCampus extends Component {
           </h4>
             }
           </div>
-          {/* <UpdateCampus {...this.props} /> */}
+          <UpdateCampus {...this.props} />
         </div>
       )
     }
