@@ -10,7 +10,6 @@ class AddStudent extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      imageUrl: '',
       gpa: 0
     }
     this.handleSubmit = this.handleSubmit.bind(this);

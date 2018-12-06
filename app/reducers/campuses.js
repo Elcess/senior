@@ -24,7 +24,7 @@ export const showOneCampus = campus => {
   }
 }
 
-export const addedCampus = (campuses) => {
+export const addedCampus = (campus) => {
   return {
     type: ADDED_CAMPUS,
     campus
@@ -61,10 +61,10 @@ export const fetchSingleCampus = (id) => {
   }
 }
 
-export const addNewCampus = () => {
+export const addNewCampus = (campus) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/api/campuses')
+      const { data } = await axios.post('/api/campuses', campus);
       dispatch(addedCampus(data));
     } catch (err) {
       console.error(err);

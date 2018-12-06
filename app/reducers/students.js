@@ -61,10 +61,10 @@ export const fetchSingleStudent = id => {
   }
 }
 
-export const addNewStudent = () => {
+export const addNewStudent = (student) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/api/students')
+      const { data } = await axios.post('/api/students', student);
       dispatch(addedStudent(data));
     } catch (err) {
       console.error(err);

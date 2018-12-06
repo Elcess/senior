@@ -9,7 +9,6 @@ class AddCampus extends Component {
     this.state = {
       name: '',
       address: '',
-      imageUrl: '',
       description: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
