@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchAllCampuses } from '../reducers/campuses';
+import { fetchAllCampuses, removeCampus } from '../reducers/campuses';
+import AddCampus from './AddCampus';
 
 class AllCampuses extends Component {
   componentDidMount() {
     this.props.fetchAllCampuses();
+  }
+
+  handleClick(id) {
+    // e.preventDefault;
+    this.props.removeCampus(id);
   }
 
   render() {
@@ -14,12 +20,14 @@ class AllCampuses extends Component {
         <h2>All Campuses</h2>
         <ul>
           {this.props.campuses.map(campus => <li key={campus.id}>
+            <button onClick={() => this.handleClick(campus.id)}>X</button>
             <Link to={`/campuses/${campus.id}`}>
               <img src={campus.imageUrl} width='100' />
               {campus.name}
             </Link>
           </li>)}
         </ul>
+        <AddCampus />
       </div>
     );
   };
@@ -33,7 +41,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllCampuses: () => dispatch(fetchAllCampuses())
+    fetchAllCampuses: () => dispatch(fetchAllCampuses()),
+    removeCampus: (id) => dispatch(removeCampus(id))
   }
 }
 

@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchAllStudents } from '../reducers/students';
+import { fetchAllStudents, removeStudent } from '../reducers/students';
 
 class AllStudents extends Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    this.props.removeStudent(id);
+  }
+
   componentDidMount() {
     this.props.fetchAllStudents();
   }
@@ -14,6 +23,7 @@ class AllStudents extends Component {
         <h2>All Students</h2>
         <ul>
           {this.props.students.map(student => <li key={student.id}>
+            <button onClick={() => this.handleClick(student.id)}>X</button>
             <Link to={`/students/${student.id}`} >
               {student.firstName} {student.lastName}
             </Link>
@@ -32,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllStudents: () => dispatch(fetchAllStudents())
+    fetchAllStudents: () => dispatch(fetchAllStudents()),
+    removeStudent: (id) => dispatch(removeStudent(id))
   }
 }
 

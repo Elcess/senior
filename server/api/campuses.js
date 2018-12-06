@@ -25,4 +25,22 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.post('/', async (req, res, next) => {
+  try {
+    const newCampus = await Campus.create(req.body);
+    res.json(newCampus);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const numDeleted = await Campus.destroy({ where: { id: req.params.id } });
+    res.json(numDeleted);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 module.exports = router;

@@ -24,4 +24,22 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.post('/', async (req, res, next) => {
+  try {
+    const newStudent = await Student.create(req.body);
+    res.json(newStudent);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const numDeleted = await Student.destroy({ where: { id: req.params.id } });
+    res.json(numDeleted);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 module.exports = router;
