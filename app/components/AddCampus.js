@@ -41,7 +41,7 @@ class AddCampus extends Component {
 
   render() {
     return (
-      <div>
+      <div className='addOne'>
         <h3>Add a New Campus:</h3>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='new-campus-name'>New Campus Name (Required)</label>

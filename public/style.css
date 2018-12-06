@@ -10,7 +10,7 @@
 
 body {
   background: linear-gradient(#ffffff, #c0c0c0);
-  height: 100vh;
+  height: 100%;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -24,6 +24,11 @@ nav {
   display: flex;
   height: 80px;
   padding: 10px;
+  font-size: 2em;
+}
+
+nav a {
+  color: #c0c0c0;
 }
 
 main {
@@ -40,5 +45,16 @@ ul {
 
 button {
   border-radius: 50%;
-  font: bold; 
+  font: bold;
+  font-size: 1.5em;
+  height: 2em;
+}
+
+.addOne {
+  background-color: #333333;
+  color: #c0c0c0;
+  width: 80vw;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }

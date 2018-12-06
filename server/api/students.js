@@ -38,7 +38,17 @@ router.delete('/:id', async (req, res, next) => {
     const numDeleted = await Student.destroy({ where: { id: req.params.id } });
     res.json(numDeleted);
   } catch (err) {
-    console.error(err);
+    next(err);
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const student = await Student.findById(req.params.id);
+    await student.update(req.body);
+    res.json(student);
+  } catch (err) {
+    next(err);
   }
 });
 

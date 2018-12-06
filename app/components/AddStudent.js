@@ -48,7 +48,7 @@ class AddStudent extends Component {
 
   render() {
     return (
-      <div>
+      <div className='addOne'>
         <h3>Add a New Student:</h3>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='new-student-firstname'>New Student First Name (Required)</label>

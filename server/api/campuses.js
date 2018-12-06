@@ -43,4 +43,14 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
+router.put('/:id', async (req, res, next) => {
+  try {
+    const campus = await Campus.findById(req.params.id);
+    await campus.update(req.body);
+    res.json(campus);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

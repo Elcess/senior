@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleStudent } from '../reducers/students';
+import UpdateStudent from './UpdateStudent';
 
 class SingleStudent extends Component {
   componentDidMount() {
@@ -44,6 +45,7 @@ class SingleStudent extends Component {
               }
             </div>
           </div>
+          <UpdateStudent {...this.props} />
         </div>
       );
     }

@@ -8,6 +8,7 @@ const GOT_ALL_CAMPUSES = 'GOT_ALL_CAMPUSES';
 const SHOW_ONE_CAMPUS = 'SHOW_ONE_CAMPUS';
 const ADDED_CAMPUS = 'ADDED_CAMPUS';
 const REMOVED_CAMPUS = 'REMOVED_CAMPUS';
+const UPDATED_CAMPUS = 'UPDATED_CAMPUS';
 
 // Action Creators
 export const gotAllCampuses = (campuses) => {
@@ -35,6 +36,13 @@ export const removedCampus = (id) => {
   return {
     type: REMOVED_CAMPUS,
     id
+  }
+}
+
+export const updatedCampus = (campus) => {
+  return {
+    type: UPDATED_CAMPUS,
+    student
   }
 }
 
@@ -83,6 +91,17 @@ export const removeCampus = (id) => {
   }
 }
 
+export const updateCampus = (id, update) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/api/campuses/${id}`, update);
+      dispatch(updatedCampus(data));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_ALL_CAMPUSES:
@@ -93,6 +112,8 @@ const reducer = (state = initialState, action) => {
       return [...state, action.campus];
     case REMOVED_CAMPUS:
       return state.filter(campus => campus.id !== action.id);
+    case UPDATED_CAMPUS:
+      return [action.campus];
     default:
       return state;
   }

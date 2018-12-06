@@ -8,6 +8,7 @@ const GOT_ALL_STUDENTS = 'GOT_ALL_STUDENTS';
 const SHOW_ONE_STUDENT = 'SHOW_ONE_STUDENT';
 const ADDED_STUDENT = 'ADDED_STUDENT';
 const REMOVED_STUDENT = 'REMOVED_STUDENT';
+const UPDATED_STUDENT = 'UPDATED_STUDENT';
 
 // Action Creators
 export const gotAllStudents = (students) => {
@@ -35,6 +36,13 @@ export const removedStudent = (id) => {
   return {
     type: REMOVED_STUDENT,
     id
+  }
+}
+
+export const updatedStudent = (student) => {
+  return {
+    type: UPDATED_STUDENT,
+    student
   }
 }
 
@@ -83,6 +91,17 @@ export const removeStudent = (id) => {
   }
 }
 
+export const updateStudent = (id, update) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/api/students/${id}`, update);
+      dispatch(updatedStudent(data));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_ALL_STUDENTS:
@@ -93,6 +112,8 @@ const reducer = (state = initialState, action) => {
       return [...state, action.student];
     case REMOVED_STUDENT:
       return state.filter(student => student.id !== action.id);
+    case UPDATED_STUDENT:
+      return [action.student];
     default:
       return state;
   }
