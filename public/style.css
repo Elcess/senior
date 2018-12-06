@@ -37,3 +37,8 @@ ul {
   list-style: none;
   align-items: center;
 }
+
+button {
+  border-radius: 50%;
+  font: bold; 
+}

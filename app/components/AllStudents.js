@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchAllStudents, removeStudent } from '../reducers/students';
+import AddStudent from './AddStudent';
 
 class AllStudents extends Component {
   constructor() {
@@ -29,6 +30,7 @@ class AllStudents extends Component {
             </Link>
           </li>)}
         </ul>
+        <AddStudent />
       </div>
     );
   };
