@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleCampus } from '../reducers/campuses';
-import { getStudentsByCampus } from '../reducers/students'
+import { getStudentsByCampus, fetchAllStudents } from '../reducers/students'
 import UpdateCampus from './UpdateCampus'
 
 class SingleCampus extends Component {
   componentDidMount() {
     this.props.fetchSingleCampus(this.props.match.params.id);
+    this.props.fetchAllStudents();
   }
 
   render() {
@@ -18,7 +19,8 @@ class SingleCampus extends Component {
       )
     }
     else {
-      const students = this.props.students;
+      let students = this.props.students;
+      students = students.filter(student => student.campusId === campus.id);
       return (
         <div>
           {campus ?
@@ -45,7 +47,7 @@ class SingleCampus extends Component {
           </h4>
             }
           </div>
-          <UpdateCampus {...this.props} />
+          {/* <UpdateCampus {...this.props} /> */}
         </div>
       )
     }
@@ -55,12 +57,14 @@ class SingleCampus extends Component {
 const mapStateToProps = state => {
   return {
     campuses: state.campuses,
-    students: getStudentsByCampus(state, state.campuses[0].id)
+    students: state.students
+    // getStudentsByCampus(state, state.campuses[0].id)
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSingleCampus: (id) => dispatch(fetchSingleCampus(id))
+    fetchSingleCampus: (id) => dispatch(fetchSingleCampus(id)),
+    fetchAllStudents: () => dispatch(fetchAllStudents())
   }
 }
 

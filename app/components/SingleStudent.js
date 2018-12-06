@@ -9,6 +9,7 @@ class SingleStudent extends Component {
   componentDidMount() {
     this.props.fetchSingleStudent(this.props.match.params.id);
     this.props.fetchAllCampuses();
+    console.log(this.props);
   }
 
   render() {
@@ -57,7 +58,8 @@ class SingleStudent extends Component {
 const mapStateToProps = state => {
   return {
     students: state.students,
-    campuses: getCampusByStudent(state, state.students[0].campusId)
+    campuses: state.campuses
+    // getCampusByStudent(state, state.students[0].campusId)
   }
 }
 const mapDispatchToProps = dispatch => {
