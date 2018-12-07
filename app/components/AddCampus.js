@@ -26,9 +26,9 @@ class AddCampus extends Component {
     });
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    this.props.addNewCampus(this.state);
+    await this.props.addNewCampus(this.state);
     this.setState({
       name: '',
       address: '',

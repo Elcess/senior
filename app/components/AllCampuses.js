@@ -10,7 +10,6 @@ class AllCampuses extends Component {
   }
 
   handleClick(id) {
-    // e.preventDefault;
     this.props.removeCampus(id);
   }
 

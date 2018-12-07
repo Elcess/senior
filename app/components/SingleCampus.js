@@ -2,34 +2,37 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleCampus } from '../reducers/campuses';
-import { getStudentsByCampus, fetchAllStudents } from '../reducers/students'
+import { fetchAllStudents } from '../reducers/students'
 import UpdateCampus from './UpdateCampus'
 
 class SingleCampus extends Component {
-  componentDidMount() {
-    this.props.fetchSingleCampus(this.props.match.params.id);
-    this.props.fetchAllStudents();
+  async componentDidMount() {
+    await this.props.fetchSingleCampus(this.props.match.params.id);
+    await this.props.fetchAllStudents();
   }
 
   render() {
-    const campus = this.props.campuses[0];
+    const campus = this.props.campuses.find(site => site.id === +this.props.match.params.id);
     if (!campus) {
       return (
         <h1>We're sorry. That campus is not open yet.</h1>
       )
     }
     else {
-      let students = this.props.students;
-      students = students.filter(student => student.campusId === campus.id);
+      const students = this.props.students.filter(student => student.campusId === campus.id);
       return (
         <div>
           {campus ?
             <div id='campus'>
-              <img src={campus.imageUrl} width='300' />
-              <h2>{campus.name} - {campus.address}</h2>
-              <p>{campus.description}</p>
+              <div className='left'>
+                <img src={campus.imageUrl} width='300px' height='300px' />
+              </div>
+              <div className='right'>
+                <h2>{campus.name} - {campus.address}</h2>
+                <p>{campus.description}</p>
+              </div>
             </div>
-            : ''
+            : <h1>We're sorry. That campus is not open yet.</h1>
           }
 
           <div id='students'>

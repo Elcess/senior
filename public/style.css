@@ -38,7 +38,7 @@ main {
   justify-content: center;
 }
 
-ul {
+dul {
   list-style: none;
   align-items: center;
 }
@@ -57,4 +57,21 @@ button {
   align-items: center;
   justify-content: center;
   padding: 10px;
+}
+
+#campus {
+  display: flex;
+}
+
+.left {
+  display: flex;
+  flex-grow: 1;
+  align-content: flex-start;
+}
+
+.right {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: flex-start;
 }

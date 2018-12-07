@@ -18,7 +18,7 @@ export const gotAllCampuses = (campuses) => {
   }
 }
 
-export const showOneCampus = campus => {
+export const showOneCampus = (campus) => {
   return {
     type: SHOW_ONE_CAMPUS,
     campus
@@ -107,6 +107,7 @@ const reducer = (state = initialState, action) => {
     case GOT_ALL_CAMPUSES:
       return [...action.campuses];
     case SHOW_ONE_CAMPUS:
+      console.log('reducer SHOW_ONE_CAMPUS value', action.campus);
       return [action.campus];
     case ADDED_CAMPUS:
       return [...state, action.campus];
