@@ -12,7 +12,7 @@ class SingleStudent extends Component {
   }
 
   render() {
-    const student = this.props.students[0];
+    const student = this.props.students.find(student => student.id === +this.props.match.params.id);
     if (!student) {
       return (
         <h1>We're sorry. That student is not registered.</h1>
@@ -23,20 +23,26 @@ class SingleStudent extends Component {
       const campus = campuses[0];
       return (
         <div>
-          <div id='student'>
+          <div >
             {student ?
-              <div>
-                <img src={student.imageUrl} width='300' />
-                <h2>{student.firstName} {student.lastName}</h2>
-                <p>{student.email}</p>
-                <p>GPA: {student.gpa}</p>
+              <div id='ss-student'>
+                <div className='left'>
+                  <img src={student.imageUrl} width='300px' height='300px' />
+                </div>
+                <div className='right'>
+                  <h2>{student.firstName} {student.lastName}</h2>
+                  <p>{student.email}</p>
+                  <p>GPA: {student.gpa}</p>
+                </div>
               </div>
-              : ''
+              : <h1>We're sorry. That student is not registered.</h1>
             }
           </div>
-          <div id='campus'>
-            <h2>Home Campus:</h2>
-            <div>
+          <div id='ss-campus'>
+            <div className='left'>
+              <h2>Home Campus:</h2>
+            </div>
+            <div className='right'>
               {campus ?
                 <div>
                   <Link to={`/campuses/${campus.id}`} >

@@ -10,6 +10,7 @@ class UpdateStudent extends Component {
     // set local state to passed-down props for filling in the update form
     this.state = this.props.student;
 
+    // bind internal functions
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeFirstName = this.changeFirstName.bind(this);
     this.changeLastName = this.changeLastName.bind(this);
@@ -18,9 +19,9 @@ class UpdateStudent extends Component {
     this.changeGPA = this.changeGPA.bind(this);
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    this.props.updateStudent(this.state.id, this.state);
+    await this.props.updateStudent(this.state.id, this.state);
   }
 
   changeFirstName(e) {

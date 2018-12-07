@@ -59,8 +59,9 @@ button {
   padding: 10px;
 }
 
-#campus {
+#campus, #ss-student, #ss-campus {
   display: flex;
+  flex-direction: row;
 }
 
 .left {
