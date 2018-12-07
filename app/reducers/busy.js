@@ -3,9 +3,9 @@ import Redux from 'redux';
 const initialState = false;
 
 // Action Types
-export const REQUEST_INITIATED = 'REQUEST_INITIATED';
-export const REQUEST_SUCCEEDED = 'REQUEST_SUCCEEDED';
-export const REQUEST_FAILED = 'REQUEST_FAILED';
+const REQUEST_INITIATED = 'REQUEST_INITIATED';
+const REQUEST_SUCCEEDED = 'REQUEST_SUCCEEDED';
+const REQUEST_FAILED = 'REQUEST_FAILED';
 
 // Action Creators
 export const requestInitiated = () => {
