@@ -31,19 +31,40 @@ nav a {
   color: #c0c0c0;
 }
 
-main {
+main, h1, h2 {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-dul {
+main {
+  height: calc(100vh - 80px);
+}
+
+h1 {
+  position: absolute;
+  top: 100px;
+}
+
+ul {
   list-style: none;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  justify-items: center;
+}
+
+li {
+  display: flex;
+  flex-grow: 1;
 }
 
 button {
+  background-color: #909090;
+  color: black;
   border-radius: 50%;
   font: bold;
   font-size: 1.5em;
@@ -54,14 +75,29 @@ button {
   background-color: #333333;
   color: #c0c0c0;
   width: 80vw;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 #campus, #ss-student, #ss-campus {
   display: flex;
   flex-direction: row;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .left {

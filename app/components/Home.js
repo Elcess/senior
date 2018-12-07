@@ -8,12 +8,8 @@ import NotFound from './NotFound';
 
 const Home = () => {
   return (
-    <BrowserRouter >
-      <div>
-        <main>
-        </main>
-      </div>
-    </BrowserRouter>
+    <div>
+    </div>
   )
 }
 

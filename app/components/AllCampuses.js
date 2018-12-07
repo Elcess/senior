@@ -16,16 +16,16 @@ class AllCampuses extends Component {
   render() {
     return (
       <div>
-        <h2>All Campuses</h2>
-        <ul>
-          {this.props.campuses.map(campus => <li key={campus.id}>
+        <h2>Our Campuses</h2>
+        <div className='flex'>
+          {this.props.campuses.map(campus => <div className='middle' key={campus.id}>
             <button onClick={() => this.handleClick(campus.id)}>X</button>
             <Link to={`/campuses/${campus.id}`}>
               <img src={campus.imageUrl} width='100' />
               {campus.name}
             </Link>
-          </li>)}
-        </ul>
+          </div>)}
+        </div>
         <AddCampus />
       </div>
     );
