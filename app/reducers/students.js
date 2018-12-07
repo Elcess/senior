@@ -51,9 +51,12 @@ export const updatedStudent = (student) => {
 export const fetchAllStudents = () => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.get('/api/students');
+      dispatch(requestSucceeded());
       dispatch(gotAllStudents(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -62,9 +65,12 @@ export const fetchAllStudents = () => {
 export const fetchSingleStudent = id => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.get(`/api/students/${id}`);
+      dispatch(requestSucceeded());
       dispatch(showOneStudent(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -73,9 +79,12 @@ export const fetchSingleStudent = id => {
 export const addNewStudent = (student) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.post('/api/students', student);
+      dispatch(requestSucceeded());
       dispatch(addedStudent(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -84,9 +93,12 @@ export const addNewStudent = (student) => {
 export const removeStudent = (id) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.delete(`/api/students/${id}`);
+      dispatch(requestSucceeded());
       dispatch(removedStudent(id));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -95,9 +107,12 @@ export const removeStudent = (id) => {
 export const updateStudent = (id, update) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.put(`/api/students/${id}`, update);
+      dispatch(requestSucceeded());
       dispatch(updatedStudent(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }

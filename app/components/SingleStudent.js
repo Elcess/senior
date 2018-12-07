@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleStudent } from '../reducers/students';
-import { getCampusByStudent, fetchAllCampuses } from '../reducers/campuses';
+import { fetchAllCampuses } from '../reducers/campuses';
 import UpdateStudent from './UpdateStudent';
 
 class SingleStudent extends Component {
-  async componentDidMount() {
-    await this.props.fetchSingleStudent(this.props.match.params.id);
-    await this.props.fetchAllCampuses();
+  componentDidMount() {
+    this.props.fetchSingleStudent(this.props.match.params.id);
+    this.props.fetchAllCampuses();
   }
 
   render() {
+    if (this.props.busy) {
+      return (
+        <h2>Accessing data ...</h2>
+      )
+    };
     const student = this.props.students.find(student => student.id === +this.props.match.params.id);
     if (!student) {
       return (
@@ -64,8 +69,8 @@ class SingleStudent extends Component {
 const mapStateToProps = state => {
   return {
     students: state.students,
-    campuses: state.campuses
-    // getCampusByStudent(state, state.students[0].campusId)
+    campuses: state.campuses,
+    busy: state.busy
   }
 }
 const mapDispatchToProps = dispatch => {

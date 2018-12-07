@@ -39,7 +39,6 @@ class SingleCampus extends Component {
             </div>
             : <h1>We're sorry. That campus is not open yet.</h1>
           }
-
           <div id='students'>
             <h2>Students:</h2>
             {students.length > 0 ?

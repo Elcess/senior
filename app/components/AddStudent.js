@@ -26,9 +26,9 @@ class AddStudent extends Component {
     });
   }
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    await this.props.addNewStudent(this.state);
+    this.props.addNewStudent(this.state);
     this.setState({
       firstName: '',
       lastName: '',

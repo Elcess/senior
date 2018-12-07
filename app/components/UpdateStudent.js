@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateStudent } from '../reducers/students';
 
@@ -19,9 +18,9 @@ class UpdateStudent extends Component {
     this.changeGPA = this.changeGPA.bind(this);
   }
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    await this.props.updateStudent(this.state.id, this.state);
+    this.props.updateStudent(this.state.id, this.state);
   }
 
   changeFirstName(e) {
