@@ -6,6 +6,8 @@ import { updateStudent } from '../reducers/students';
 class UpdateStudent extends Component {
   constructor(props) {
     super(props);
+
+    // set local state to passed-down props for filling in the update form
     this.state = this.props.student;
 
     this.handleSubmit = this.handleSubmit.bind(this);

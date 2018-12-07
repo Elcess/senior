@@ -102,12 +102,6 @@ export const updateCampus = (id, update) => {
   }
 }
 
-// Selectors
-export const getCampusByStudent = (state, campusId) => {
-  const campuses = state.campuses.filter(campus => campus.id === campusId);
-  return campuses;
-}
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_ALL_CAMPUSES:

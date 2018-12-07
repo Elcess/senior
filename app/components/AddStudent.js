@@ -23,6 +23,7 @@ class AddStudent extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addNewStudent(this.state);
+    this.setState({});
   }
 
   changeFirstName(e) {

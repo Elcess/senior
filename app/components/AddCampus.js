@@ -21,6 +21,7 @@ class AddCampus extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addNewCampus(this.state);
+    this.setState({});
   }
 
   changeName(e) {
@@ -51,7 +52,7 @@ class AddCampus extends Component {
           <label htmlFor='new-campus-imageUrl'>Image URL</label>
           <input type='text' id='new-campus-imageUrl' size='40' value={this.state.imageUrl} onChange={this.changeImage} /><br />
           <label htmlFor='new-campus-description'>Description</label>
-          <input type='text' id='new-campus-description' size='100' value={this.state.description} onChange={this.changeDescription} /><br />
+          <textarea id='new-campus-description' cols='100' value={this.state.description} onChange={this.changeDescription} /><br />
           <button type='submit'>Submit</button>
         </form>
       </div>
