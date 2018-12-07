@@ -1,5 +1,6 @@
 import Redux from 'redux';
 import axios from 'axios';
+import { requestInitiated, requestSucceeded, requestFailed } from './busy';
 
 const initialState = [];
 
@@ -50,9 +51,12 @@ export const updatedCampus = (campus) => {
 export const fetchAllCampuses = () => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.get('/api/campuses');
+      dispatch(requestSucceeded());
       dispatch(gotAllCampuses(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -61,9 +65,12 @@ export const fetchAllCampuses = () => {
 export const fetchSingleCampus = (id) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.get(`/api/campuses/${id}`);
+      dispatch(requestSucceeded());
       dispatch(showOneCampus(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -72,9 +79,12 @@ export const fetchSingleCampus = (id) => {
 export const addNewCampus = (campus) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.post('/api/campuses', campus);
+      dispatch(requestSucceeded());
       dispatch(addedCampus(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -83,9 +93,12 @@ export const addNewCampus = (campus) => {
 export const removeCampus = (id) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.delete(`/api/campuses/${id}`);
+      dispatch(requestSucceeded());
       dispatch(removedCampus(id));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -94,9 +107,12 @@ export const removeCampus = (id) => {
 export const updateCampus = (id, update) => {
   return async (dispatch) => {
     try {
+      dispatch(requestInitiated());
       const { data } = await axios.put(`/api/campuses/${id}`, update);
+      dispatch(requestSucceeded());
       dispatch(updatedCampus(data));
     } catch (err) {
+      dispatch(requestFailed());
       console.error(err);
     }
   }
@@ -107,7 +123,6 @@ const reducer = (state = initialState, action) => {
     case GOT_ALL_CAMPUSES:
       return [...action.campuses];
     case SHOW_ONE_CAMPUS:
-      console.log('reducer SHOW_ONE_CAMPUS value', action.campus);
       return [action.campus];
     case ADDED_CAMPUS:
       return [...state, action.campus];

@@ -14,6 +14,11 @@ class AllCampuses extends Component {
   }
 
   render() {
+    if (this.props.busy) {
+      return (
+        <h2>Accessing data ...</h2>
+      )
+    };
     return (
       <div>
         <h2>Our Campuses</h2>
@@ -34,7 +39,8 @@ class AllCampuses extends Component {
 
 const mapStateToProps = state => {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
+    busy: state.busy
   }
 }
 

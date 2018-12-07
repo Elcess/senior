@@ -22,9 +22,9 @@ class UpdateCampus extends Component {
     this.setState(this.props.campus);
   }
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    await this.props.updateCampus(this.state.id, this.state);
+    this.props.updateCampus(this.state.id, this.state);
     this.setState(this.props.campus);
   }
 

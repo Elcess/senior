@@ -6,12 +6,17 @@ import { fetchAllStudents } from '../reducers/students'
 import UpdateCampus from './UpdateCampus'
 
 class SingleCampus extends Component {
-  async componentDidMount() {
-    await this.props.fetchSingleCampus(this.props.match.params.id);
-    await this.props.fetchAllStudents();
+  componentDidMount() {
+    this.props.fetchSingleCampus(this.props.match.params.id);
+    this.props.fetchAllStudents();
   }
 
   render() {
+    if (this.props.busy) {
+      return (
+        <h2>Accessing data ...</h2>
+      )
+    };
     const campus = this.props.campuses.find(site => site.id === +this.props.match.params.id);
     if (!campus) {
       return (
@@ -60,8 +65,8 @@ class SingleCampus extends Component {
 const mapStateToProps = state => {
   return {
     campuses: state.campuses,
-    students: state.students
-    // getStudentsByCampus(state, state.campuses[0].id)
+    students: state.students,
+    busy: state.busy
   }
 }
 const mapDispatchToProps = dispatch => {
