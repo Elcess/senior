@@ -9,8 +9,7 @@ class AddStudent extends Component {
     this.state = {
       firstName: '',
       lastName: '',
-      email: '',
-      gpa: 0
+      email: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeFirstName = this.changeFirstName.bind(this);
@@ -20,10 +19,22 @@ class AddStudent extends Component {
     this.changeGPA = this.changeGPA.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: ''
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.addNewStudent(this.state);
-    this.setState({});
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: ''
+    });
   }
 
   changeFirstName(e) {

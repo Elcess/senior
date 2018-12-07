@@ -18,10 +18,22 @@ class AddCampus extends Component {
     this.changeDescription = this.changeDescription.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      name: '',
+      address: '',
+      description: ''
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.addNewCampus(this.state);
-    this.setState({});
+    this.setState({
+      name: '',
+      address: '',
+      description: ''
+    });
   }
 
   changeName(e) {
