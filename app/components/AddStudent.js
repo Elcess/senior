@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNewStudent } from '../reducers/students';
 
@@ -27,9 +26,9 @@ class AddStudent extends Component {
     });
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    this.props.addNewStudent(this.state);
+    await this.props.addNewStudent(this.state);
     this.setState({
       firstName: '',
       lastName: '',
