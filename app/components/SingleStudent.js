@@ -6,10 +6,9 @@ import { getCampusByStudent, fetchAllCampuses } from '../reducers/campuses';
 import UpdateStudent from './UpdateStudent';
 
 class SingleStudent extends Component {
-  componentDidMount() {
-    this.props.fetchSingleStudent(this.props.match.params.id);
-    this.props.fetchAllCampuses();
-    console.log(this.props);
+  async componentDidMount() {
+    await this.props.fetchSingleStudent(this.props.match.params.id);
+    await this.props.fetchAllCampuses();
   }
 
   render() {
@@ -49,7 +48,7 @@ class SingleStudent extends Component {
               }
             </div>
           </div>
-          {/* <UpdateStudent {...this.props} /> */}
+          <UpdateStudent student={student} />
         </div>
       );
     }

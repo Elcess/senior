@@ -6,8 +6,7 @@ import { updateStudent } from '../reducers/students';
 class UpdateStudent extends Component {
   constructor(props) {
     super(props);
-    this.state = this.props.students[0].student;
-    console.log(this.state);
+    this.state = this.props.student;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeFirstName = this.changeFirstName.bind(this);
