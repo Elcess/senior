@@ -16,7 +16,7 @@
     "skeleton"
   ],
   "dependencies": {
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "body-parser": "^1.19.2",
     "chalk": "^5.0.1",
     "express": "^4.17.3",
